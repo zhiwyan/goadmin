@@ -1,0 +1,18 @@
+2018-10-29 16:35:22	debug	logger/logger.go:106	log config:{LogLevel:debug LogFile:./config_server.log IsDebug:1}
+2018-10-29 16:51:58	debug	logger/logger.go:106	log config:{LogLevel:debug LogFile:./config_server.log IsDebug:1}
+2018-10-29 17:01:19	debug	logger/logger.go:106	log config:{LogLevel:debug LogFile:./config_server.log IsDebug:1}
+2018-10-29 17:01:49	info	logger/logger.go:111	request/response: {"request":{},"requestURL":"/teacherPcAppInfo/getTeacherPcInfo","response":{"data":{"AppUrl":"https://down-qiniu.xueba100.com/wenba_class_tc_setup-v2.7.2.0.exe","ForcedUpdate":1,"LastVersion":"2.7.3.0"},"msg":"OK","statusCode":0,"success":true}}
+2018-10-29 17:05:59	debug	logger/logger.go:106	log config:{LogLevel:debug LogFile:./config_server.log IsDebug:1}
+2018-10-29 17:06:06	info	logger/logger.go:111	request/response: {"request":{},"requestURL":"/teacherPcAppInfo/getTeacherPcInfo","response":{"data":{"AppUrl":"","ForcedUpdate":1,"LastVersion":"","Md5":"","UpdateInfo":""},"msg":"OK","statusCode":0,"success":true}}
+2018-10-29 17:10:52	info	logger/logger.go:111	request/response: {"request":{},"requestURL":"/teacherPcAppInfo/getTeacherPcInfo","response":{"data":{"AppUrl":"","ForcedUpdate":1,"LastVersion":"","Md5":"","UpdateInfo":""},"msg":"OK","statusCode":0,"success":true}}
+2018-10-29 17:10:57	debug	logger/logger.go:106	log config:{LogLevel:debug LogFile:./config_server.log IsDebug:1}
+2018-10-29 17:11:00	info	logger/logger.go:111	request/response: {"request":{},"requestURL":"/teacherPcAppInfo/getTeacherPcInfo","response":{"data":{"AppUrl":"","ForcedUpdate":1,"LastVersion":"","Md5":"","UpdateInfo":""},"msg":"OK","statusCode":0,"success":true}}
+2018-10-29 17:11:06	info	logger/logger.go:111	request/response: {"request":{},"requestURL":"/teacherPcAppInfo/getTeacherPcInfo","response":{"data":{"AppUrl":"","ForcedUpdate":1,"LastVersion":"","Md5":"","UpdateInfo":""},"msg":"OK","statusCode":0,"success":true}}
+2018-10-29 17:32:33	info	logger/logger.go:111	request/response: {"request":{},"requestURL":"/teacherPcAppInfo/getTeacherPcInfo","response":{"data":{"AppUrl":"","ForcedUpdate":1,"LastVersion":"","Md5":"","UpdateInfo":""},"msg":"OK","statusCode":0,"success":true}}
+2018-10-29 17:32:41	debug	logger/logger.go:106	log config:{LogLevel:debug LogFile:./config_server.log IsDebug:1}
+2018-10-29 17:32:45	info	logger/logger.go:111	CheckVersion::input err:message:illegal request error
+2018-10-29 17:32:45	info	logger/logger.go:111	request/response: {"request":{"cur_version":""},"requestURL":"/teacherPcAppInfo/getTeacherPcInfo","response":{"data":{"AppUrl":"","ForcedUpdate":1,"LastVersion":"","Md5":"","UpdateInfo":"","New":0,"ForgetPage":"","SignupPage":""},"msg":"OK","statusCode":0,"success":true}}
+2018-10-29 17:33:13	debug	logger/logger.go:106	log config:{LogLevel:debug LogFile:./config_server.log IsDebug:1}
+2018-10-29 17:33:31	info	logger/logger.go:111	CheckVersion::input err:message:illegal request error
+2018-10-29 17:33:31	info	logger/logger.go:111	request/response: {"request":{"cur_version":""},"requestURL":"/studentPcAppInfo/getStudentPcInfo","response":{"data":{"AppUrl":"","ForcedUpdate":1,"LastVersion":"","Md5":"","UpdateInfo":"","New":0,"ForgetPage":"","SignupPage":""},"msg":"OK","statusCode":0,"success":true}}
+2018-10-29 17:35:44	debug	logger/logger.go:106	log config:{LogLevel:debug LogFile:./config_server.log IsDebug:1}

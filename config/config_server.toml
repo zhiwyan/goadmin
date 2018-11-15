@@ -1,0 +1,107 @@
+#基本配置
+#DebugMode   = "debug"
+#ReleaseMode = "release"
+Env = "qa" # 环境: qa 测试  pro 生产
+Mode="debug"
+AppKey = "base64:z5v8YhqPn8Tw4EpGRTrBO+ultujVjVfD9qZ8ZVWwDPQ="
+
+#nsq
+#NsqAddr = "10.2.1.148:18150"
+
+#端口
+Port=8080
+
+[teacherPcAppInfo]
+    AppUrl = ""
+    ForcedUpdate = 1
+    LastVersion = ""
+    Md5 = ""
+    UpdateInfo = ""
+    New = 0
+    ForgetPage = ""
+    SignupPage = ""
+
+[studentPcAppInfo]
+    AppUrl = ""
+    ForcedUpdate = 1
+    LastVersion = ""
+    Md5 = ""
+    UpdateInfo = ""
+    New = 0
+    MinVersion = ""
+    ForgetPage = ""
+    SignupPage = ""
+
+[studentAndroidInfo]
+    AppID = ""
+    AppUrl = ""
+    ForcedUpdate = 1
+    LastVersion = ""
+    Md5 = ""
+    UpdateInfo = ""
+    New = 0
+    MinVersion = ""
+    Size = ""
+
+[studentAndroidAppInfo]
+    AppID = ""
+    AppUrl = ""
+    ForcedUpdate = 1
+    LastVersion = ""
+    Md5 = ""
+    UpdateInfo = ""
+    New = 0
+    MinVersion = ""
+    Size = ""
+
+[studentIosInfo]
+    AppID = ""
+    AppUrl = ""
+    ForcedUpdate = 1
+    LastVersion = ""
+    Md5 = ""
+    UpdateInfo = ""
+    New = 0
+    MinVersion = ""
+    Size = ""
+
+[studentIosAppInfo]
+    AppID = ""
+    AppUrl = ""
+    ForcedUpdate = 1
+    LastVersion = ""
+    Md5 = ""
+    UpdateInfo = ""
+    New = 0
+    MinVersion = ""
+    Size = ""
+
+[log]
+#debug info warn error 
+logLevel="debug"
+logFile="./config_server.log"
+isDebug=1
+
+#mysql 配置
+#[mysql]
+#	Host="10.2.1.100"
+#	Password = "k62CmTavWQGp90T4U50BJgvYQACGoCGa"
+#	User = "wenba"
+#	Database = "fudao_course_dev"
+#	Maxlifetime = 5
+#	MaxidleConns = 10
+
+#redis 配置
+#[redis]
+#	Server = "10.9.101.41:6379"
+#	Password = "FhPVixF4giXz0ECxUHiYF4UEAJCC0HNZ"
+#	RedisMaxIidleConn = 5
+#	RedisIdleTimeoutSec = 240
+#	SelectDb = 5
+
+#[classRoomRedis]
+#    Server = "10.2.1.148:6379"
+#    Password = ""
+#    RedisMaxIidleConn = 5
+#    RedisIdleTimeoutSec = 240
+#    SelectDb = 0
