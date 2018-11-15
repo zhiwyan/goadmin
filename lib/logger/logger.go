@@ -64,7 +64,7 @@ func initLogger(lp string, lv string, isDebug bool) error {
 	cfg.EncoderConfig.EncodeTime = ZnTimeEncoder
 	var err error
 	var tlog *zap.Logger
-	tlog, err = cfg.Build()
+	tlog, err = cfg.Build(zap.AddCallerSkip(1))
 	if err != nil {
 		log.Fatal("init logger error: ", err)
 		return err

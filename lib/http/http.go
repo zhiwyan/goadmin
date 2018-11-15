@@ -2,14 +2,12 @@ package http
 
 import (
 	"bytes"
-	"config_server/lib/common"
-	"config_server/lib/logger"
 	"encoding/json"
 	"errors"
 	"fmt"
+	"go_web_demo/lib/common"
+	"go_web_demo/lib/logger"
 	"io/ioutil"
-
-	//	"log"
 	"net/http"
 	"net/url"
 	"strings"
@@ -58,22 +56,28 @@ type ResultMapStruct struct {
  * @param  {[type]} data map[string]interface{}) ([]byte,      error [description]
  * @return {[type]}      [description]
  */
-func saveRespLog(c *gin.Context, data, reqData interface{}) error {
-	r := make(map[string]interface{}, 2)
-	r["request"] = reqData
-	r["response"] = data
-	r["requestURL"] = c.Request.URL.String()
+func saveRespLog(c *gin.Context, data interface{}) error {
+	requestUrl := c.Request.URL.String()
 
-	b, err := json.Marshal(r)
+	reqStartTime, _ := c.Get("reqStartTime")
+	costTime := common.End(reqStartTime.(time.Time))
+
+	reqData, _ := c.Get("reqData")
+	requestBody, err := json.Marshal(reqData)
 	if err != nil {
-		return err
+		logger.Warnf("saveRespLog::errUrl$v reqData:%v err%v", reqData, err)
 	}
-	logger.Infof("request/response: %s", string(b))
+
+	responseBody, err := json.Marshal(data)
+	if err != nil {
+		logger.Warnf("saveRespLog::errUrl$v responseBody:%v err%v", responseBody, err)
+	}
+	logger.Infof(` %s###%s###%s###%v`, requestUrl, string(requestBody), string(responseBody), costTime)
 	return nil
 }
 
 // ResponseSuccess 成功返回AccountMessageContentDataStruct
-func ResponseSuccess(c *gin.Context, data, reqData interface{}) {
+func ResponseSuccess(c *gin.Context, data interface{}) {
 
 	ret := map[string]interface{}{
 		"statusCode": common.ERR_SUC.ErrorNo,
@@ -82,12 +86,12 @@ func ResponseSuccess(c *gin.Context, data, reqData interface{}) {
 		"data":       data,
 	}
 
-	RenderJson(c, ret, reqData)
+	RenderJson(c, ret)
 	return
 }
 
 // 自定义返回格式，目的兼容老版本接口
-func ResponseCustom(c *gin.Context, data, reqData interface{}) {
+func ResponseCustom(c *gin.Context, data interface{}) {
 
 	// ret := map[string]interface{}{
 	// 	"statusCode": common.ERR_SUC.ErrorNo,
@@ -96,12 +100,12 @@ func ResponseCustom(c *gin.Context, data, reqData interface{}) {
 	// 	"data":       data,
 	// }
 
-	RenderJson(c, data, reqData)
+	RenderJson(c, data)
 	return
 }
 
 // ResponseError 失败返回
-func ResponseError(c *gin.Context, err *common.Err, reqData interface{}) {
+func ResponseError(c *gin.Context, err *common.Err) {
 
 	ret := map[string]interface{}{
 		"statusCode": err.ErrorNo,
@@ -110,12 +114,12 @@ func ResponseError(c *gin.Context, err *common.Err, reqData interface{}) {
 		"data":       []interface{}{},
 	}
 
-	RenderJson(c, ret, reqData)
+	RenderJson(c, ret)
 	return
 }
 
 // ResponseCustomError 自定义返回
-func ResponseCustomError(c *gin.Context, errMsg string, reqData interface{}) {
+func ResponseCustomError(c *gin.Context, errMsg string) {
 
 	ret := map[string]interface{}{
 		"statusCode": common.ERR_CUSTOM.ErrorNo,
@@ -124,25 +128,25 @@ func ResponseCustomError(c *gin.Context, errMsg string, reqData interface{}) {
 		"data":       []interface{}{},
 	}
 
-	RenderJson(c, ret, reqData)
+	RenderJson(c, ret)
 	return
 }
 
-func ResponseStatusCodeStringError(c *gin.Context, info []byte, reqData interface{}) {
+func ResponseStatusCodeStringError(c *gin.Context, info []byte) {
 
 	var commonDataString CommonDataString
 	var err error
 	err = json.Unmarshal(info, &commonDataString)
 	if err != nil {
-		ResponseError(c, common.ERR_REMOTE_CURL, reqData)
+		ResponseError(c, common.ERR_REMOTE_CURL)
 		return
 	}
 
-	ResponseCustom(c, commonDataString, reqData)
+	ResponseCustom(c, commonDataString)
 }
 
-func RenderJson(c *gin.Context, data, reqData interface{}) {
-	saveRespLog(c, data, reqData) //保存日志
+func RenderJson(c *gin.Context, data interface{}) {
+	saveRespLog(c, data) //保存日志
 	c.Header("Content-Type", "application/json;charset=UTF-8")
 	c.JSON(200, data)
 	return
@@ -341,54 +345,8 @@ func PostJsonRequestReturnJsonByte(url string, requestData interface{}) ([]byte,
 
 //GetBodyParam 获取json格式的请求数据，keyStruct需要传入指针，该方法会对keyStruct赋值
 func GetBodyParam(c *gin.Context, keyStruct interface{}) (err error) {
-	contentType := c.ContentType()
-	err = nil
-	if contentType == "application/json" {
-		var postJsonByte []byte
-		postJsonByte, err = c.GetRawData()
-		if err != nil {
-			err = errors.New("param error, message:" + err.Error())
-			return
-		}
-
-		if len(postJsonByte) >= 2 {
-			err = json.Unmarshal(postJsonByte, &keyStruct)
-			if err != nil {
-				logger.Warnf("Unmarshal error:%s data:%s", err.Error(), string(postJsonByte))
-				err = errors.New("param json unmarshal error, message:" + err.Error())
-				return
-			}
-		}
-	} else if contentType == "application/x-www-form-urlencoded" || contentType == "multipart/form-data" {
-		c.Request.ParseForm()
-		param := c.Request.PostForm
-		c.MultipartForm()
-
-		newParam := make(map[string]interface{}, 20)
-		for k, v := range param {
-			if len(v) > 1 {
-				newParam[k] = v
-			} else {
-				newParam[k] = v[0]
-			}
-		}
-		var paramJsonByte []byte
-		paramJsonByte, err = json.Marshal(newParam)
-		if err != nil {
-			logger.Warnf("Marshal error, data:%+v error:%s", newParam, err)
-			err = errors.New("json Marshal error " + err.Error())
-			return
-		}
-		err = json.Unmarshal(paramJsonByte, &keyStruct)
-		if err != nil {
-			logger.Warnf("Unmarshal error:%s data:%s", err.Error(), string(paramJsonByte))
-			err = errors.New("json Unmarshal error " + err.Error())
-			return
-		}
-	} else {
-		err = errors.New("message:illegal request error")
-	}
-
+	err = c.ShouldBind(&keyStruct)
+	c.Set("reqData", keyStruct)
 	return
 }
 

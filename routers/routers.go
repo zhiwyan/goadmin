@@ -1,8 +1,9 @@
 package routers
 
 import (
-	"config_server/actions/classroom"
 	"fmt"
+	"go_web_demo/actions/classroom"
+	"go_web_demo/filters"
 
 	"github.com/gin-gonic/gin"
 )
@@ -14,7 +15,7 @@ func Init(g *gin.Engine) (err error) {
 	}
 
 	//rg := g.Group("test")
-	//rg.Use(filters.RouterNotFound())
+	g.Use(filters.SetRequesetTime())
 
 	g.POST("/teacherPcAppInfo/getTeacherPcInfo", classroom.GetTeacherPcInfo)
 	g.POST("/studentPcAppInfo/getStudentPcInfo", classroom.GetStudentPcInfo)

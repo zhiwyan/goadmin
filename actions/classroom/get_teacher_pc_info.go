@@ -1,9 +1,9 @@
 package classroom
 
 import (
-	"config_server/lib/config"
-	"config_server/lib/http"
-	"config_server/lib/logger"
+	"go_web_demo/lib/config"
+	"go_web_demo/lib/http"
+	"go_web_demo/lib/logger"
 
 	"github.com/gin-gonic/gin"
 )
@@ -21,5 +21,5 @@ func GetTeacherPcInfo(c *gin.Context) {
 		logger.Infof("GetTeacherPcInfo::input err:%v, input:%+v", err, input)
 	}
 
-	http.ResponseSuccess(c, config.Config.TeacherPcAppInfo, input)
+	http.ResponseSuccess(c, config.Config.TeacherPcAppInfo)
 }

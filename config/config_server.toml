@@ -3,7 +3,7 @@
 #ReleaseMode = "release"
 Env = "qa" # 环境: qa 测试  pro 生产
 Mode="debug"
-AppKey = "base64:z5v8YhqPn8Tw4EpGRTrBO+ultujVjVfD9qZ8ZVWwDPQ="
+AppKey = "base64:"
 
 #nsq
 #NsqAddr = "10.2.1.148:18150"
@@ -85,7 +85,7 @@ isDebug=1
 #mysql 配置
 #[mysql]
 #	Host="10.2.1.100"
-#	Password = "k62CmTavWQGp90T4U50BJgvYQACGoCGa"
+#	Password = ""
 #	User = "wenba"
 #	Database = "fudao_course_dev"
 #	Maxlifetime = 5
@@ -94,7 +94,7 @@ isDebug=1
 #redis 配置
 #[redis]
 #	Server = "10.9.101.41:6379"
-#	Password = "FhPVixF4giXz0ECxUHiYF4UEAJCC0HNZ"
+#	Password = ""
 #	RedisMaxIidleConn = 5
 #	RedisIdleTimeoutSec = 240
 #	SelectDb = 5

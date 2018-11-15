@@ -1,12 +1,12 @@
 package main
 
 import (
-	"config_server/lib/config"
-	libhttp "config_server/lib/http"
-	"config_server/lib/logger"
-	"config_server/routers"
 	"context"
 	"flag"
+	"go_web_demo/lib/config"
+	libhttp "go_web_demo/lib/http"
+	"go_web_demo/lib/logger"
+	"go_web_demo/routers"
 	"log"
 	"net/http"
 	_ "net/http/pprof"
