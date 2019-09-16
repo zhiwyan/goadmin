@@ -141,6 +141,6 @@ func SendMonitor2DingDing(args ...interface{}) {
 		{"msgtype": "text","text": {"content": "` + s + `"}}
 	`)
 
-	url := "https://oapi.dingtalk.com/robot/send?access_token=18ce1166e05eff3fd80bfff2342ba10513b3429c45d11e859c43d59f4f21506a"
+	url := "https://oapi.dingtalk.com/robot/send?access_token="
 	http.Post(url, "application/json", strings.NewReader(string(b))) //忽略dingding错误
 }
