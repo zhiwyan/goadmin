@@ -84,7 +84,7 @@ isDebug=1
 
 #mysql 配置
 #[mysql]
-#	Host="10.2.1.100"
+#	Host=""
 #	Password = ""
 #	User = "wenba"
 #	Database = "fudao_course_dev"
@@ -93,14 +93,14 @@ isDebug=1
 
 #redis 配置
 #[redis]
-#	Server = "10.9.101.41:6379"
+#	Server = ""
 #	Password = ""
 #	RedisMaxIidleConn = 5
 #	RedisIdleTimeoutSec = 240
 #	SelectDb = 5
 
 #[classRoomRedis]
-#    Server = "10.2.1.148:6379"
+#    Server = ""
 #    Password = ""
 #    RedisMaxIidleConn = 5
 #    RedisIdleTimeoutSec = 240
