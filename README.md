@@ -2,8 +2,8 @@
 
 ```bash
 cd $GOPATH/src
-git clone ssh://git@gitlab-wenba.xueba100.com:9922/fudao2/classroom.git
-cd classroom
+git clone https://github.com/bombyzw/go_web_demo.git
+cd go_web_demo
 ```
 
 ## 初始化、下载依赖
