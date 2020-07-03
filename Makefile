@@ -6,7 +6,7 @@ GO ?= go
 
 all:
 	git pull
-	$(GO) build -o bin/config_server main.go
+	$(GO) build -o bin/go_web_demo main.go
 #debug: gdb check
 
 init :
@@ -21,6 +21,6 @@ init :
 	chmod -R 0777 ./logs
 
 clean:
-	rm -rf bin/classroom
+	rm -rf bin/go_web_demo
 
 .PHONY : clean
