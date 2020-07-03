@@ -1,4 +1,4 @@
-# course service 重构
+# 创建一个简单的gin项目
 
 ```bash
 cd $GOPATH/src
