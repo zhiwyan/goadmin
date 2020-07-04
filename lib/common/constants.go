@@ -4,12 +4,6 @@ const (
 	ENV_PRO        = "pro"
 	ENV_QA         = "qa"
 	UPLOAD_TMP_DIR = "/tmp/"
-	// table
-	COURSE_LOG            = "fudao_course_log"
-	COURSE_EXTRA          = "fudao_course_extra"
-	COURSE                = "fudao_course"
-	UID_TO_SALE           = "fudao_uid_to_sale"
-	STUDENT_COURSE_REMARK = "fudao_student_course_remark"
 
 	F_DATE         = "2006-01-02"          // 长日期格式
 	F_DATETIME     = "2006-01-02 15:04:05" // 日期时间格式
