@@ -9,8 +9,8 @@ import (
 	"time"
 )
 
-func init() {
-	configpath := "../config/classroom_settle_consumer.toml"
+func setup() {
+	configpath := "../config/cfg.toml"
 	err := config.InitConfig(configpath)
 	if err != nil {
 		panic(err)
@@ -21,6 +21,16 @@ func init() {
 	if err != nil {
 		panic(err)
 	}
+}
+
+func teardown() {
+}
+
+func TestMain(m *testing.M) {
+	setup()
+	code := m.Run()
+	teardown()
+	os.Exit(code)
 }
 
 func TestSaveLogInfo(t *testing.T) {
