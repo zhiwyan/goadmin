@@ -2,7 +2,7 @@
 
 ```bash
 cd $GOPATH/src
-git clone https://github.com/bombyzw/go_web_demo.git
+git clone https://github.com/zhiwyan/goadmin.git
 cd go_web_demo
 ```
 
