@@ -1,8 +1,8 @@
 package crypt
 
 import (
-	"classroom/lib/config"
 	"fmt"
+	"goadmin/lib/config"
 	"log"
 	"strconv"
 	"testing"

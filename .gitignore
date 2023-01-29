@@ -5,3 +5,6 @@ out
 gen
 bin
 *.log
+go.sum
+.DS_Store
+nohup.out

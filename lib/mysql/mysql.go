@@ -2,8 +2,8 @@ package mysql
 
 // 参考 http://go-database-sql.org/connection-pool.html
 import (
-	"classroom/lib/config"
 	"fmt"
+	"goadmin/lib/config"
 	"log"
 
 	"github.com/jinzhu/gorm"

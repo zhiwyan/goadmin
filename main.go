@@ -3,10 +3,9 @@ package main
 import (
 	"context"
 	"flag"
-	"go_web_demo/lib/config"
-	libhttp "go_web_demo/lib/http"
-	"go_web_demo/lib/logger"
-	"go_web_demo/routers"
+	"goadmin/app/routers"
+	"goadmin/lib/config"
+	libhttp "goadmin/lib/http"
 	"log"
 	"net/http"
 	_ "net/http/pprof"
@@ -17,15 +16,6 @@ import (
 
 	"github.com/gin-gonic/gin"
 )
-
-func initLogger() {
-	var logConf logger.LogConfig
-	logConf.LogLevel = config.Config.Log.LogLevel
-	logConf.LogFile = config.Config.Log.LogFile
-	logConf.IsDebug = config.Config.Log.IsDebug
-	logger.InitLogger(&logConf)
-	logger.Debugf("log config:%+v", logConf)
-}
 
 func main() {
 	configpath := flag.String("f", "./config/config_server.toml", "config file")
@@ -50,11 +40,7 @@ func main() {
 	//router.Use(sessions.Sessions("wenba_session", store))
 
 	// 注册路由
-	err = routers.Init(router)
-	if err != nil {
-		log.Fatalf("routers.Init %s error", err.Error())
-		panic(err)
-	}
+	routers.Init(router)
 
 	go func() {
 		log.Println(http.ListenAndServe(":6060", nil))
@@ -116,8 +102,8 @@ func Init(configpath string) error {
 		return err
 	}
 
-	initLogger()
-	defer logger.SugaredLogger.Sync()
+	// initLogger()
+	// defer logger.SugaredLogger.Sync()
 
 	////初始化MySQL
 	//err = mysql.InitMySQL()

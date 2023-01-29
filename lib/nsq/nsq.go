@@ -1,7 +1,8 @@
 package nsq
 
 import (
-	"classroom/lib/config"
+	"goadmin/lib/config"
+
 	"github.com/nsqio/go-nsq"
 )
 

@@ -1,10 +1,10 @@
 package redis
 
 import (
-	"classroom/lib/common"
-	"classroom/lib/config"
 	"encoding/json"
 	"fmt"
+	"goadmin/lib/common"
+	"goadmin/lib/config"
 	"log"
 	"testing"
 

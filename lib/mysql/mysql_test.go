@@ -1,10 +1,11 @@
 package mysql
 
 import (
-	"classroom/lib/config"
-	"classroom/lib/mysql"
 	"fmt"
+	"goadmin/lib/config"
+	"goadmin/lib/mysql"
 	"log"
+	"os"
 	"testing"
 	"time"
 )

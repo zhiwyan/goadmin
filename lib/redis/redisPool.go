@@ -7,8 +7,8 @@ package redis
  */
 
 import (
-	"classroom/lib/config"
 	"fmt"
+	"goadmin/lib/config"
 	"time"
 
 	"github.com/gomodule/redigo/redis"

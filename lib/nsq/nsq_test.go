@@ -1,7 +1,7 @@
 package nsq
 
 import (
-	"classroom/lib/config"
+	"goadmin/lib/config"
 	"log"
 	"testing"
 )
